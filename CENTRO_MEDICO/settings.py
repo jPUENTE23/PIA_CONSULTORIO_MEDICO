@@ -57,7 +57,7 @@ ROOT_URLCONF = 'CENTRO_MEDICO.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['C:\\Users\\jorge\\001 Biblioteca\\DJANGO PROJECTS\\CENTRO MEDICO\\CENTRO_MEDICO\\CENTRO_MEDICO\\Templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

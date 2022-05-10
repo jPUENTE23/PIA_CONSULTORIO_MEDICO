@@ -15,7 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-
+from Citas.views import vistaRegistro, main, agregarRegistro
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('',main, name='main'),
+    path('RegistroCitas/', vistaRegistro, name='RegistroCitas'),
+    path('RegistroCitas/agregarRegistro/', agregarRegistro, name='agregarRegistro')
+    # path('main/RegistroCitas/', vistaRegistro, name='vistaConsulta')
 ]
