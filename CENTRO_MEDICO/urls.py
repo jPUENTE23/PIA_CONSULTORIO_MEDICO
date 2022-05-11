@@ -16,10 +16,18 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from Citas.views import vistaRegistro, main, agregarRegistro
+from Citas.views import verificarConsultas
+from Pagos.views import pagos, vistaPagos
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',main, name='main'),
     path('RegistroCitas/', vistaRegistro, name='RegistroCitas'),
+    path('verificarConsultas/', verificarConsultas, name='verificarConsultas'),
+    path('verificarConsultas/genPago/<int:idCita>', pagos, name='pagos'),
+    path('pagos/', vistaPagos, name='pagos' ),
+    path('verificarConsultas/<int:NoCita>', pagos, name='Pagos'),
     path('RegistroCitas/agregarRegistro/', agregarRegistro, name='agregarRegistro')
-    # path('main/RegistroCitas/', vistaRegistro, name='vistaConsulta')
+
 ]

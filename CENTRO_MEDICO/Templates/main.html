@@ -41,7 +41,7 @@
         }
 
         #registro, #pagos{
-            background: linear-gradient(90deg, #FBCD38, #FCBB5B);
+            background-color: #8EF8D8;
             border-radius: 20px;
         }
 
@@ -52,12 +52,25 @@
         #titulosAp1{
             border-top: 100px;
         }
+
+        #pieDeP{
+            height: 200PX;
+            margin-top: 50px;
+        }
+
+        .barraNav{
+            background-color: #2D304E;
+        }
+
+        tbody{
+            background-color: white;
+        }
     </style>
 </head>
 <body>
-    <div class="jumbotron-fluid bg-primary" >
+    <div class="jumbotron-fluid barraNav" >
         <div class="container barraNav">
-            <nav class="bg-primary" >
+            <nav class="barraNav" >
                 <ul class="nav justify-content-center" style="font-size: 20px ;">
                     <li class="nav-item">
                       <p class="nav-link active text-white" style="font-weight: bold;" aria-current="page" href="#">Centro  Medico</hp>
@@ -77,10 +90,10 @@
             <div class="row">
                 <div class="mainEncab col-4">
                     <h1>Verifica todas <br> las citas resgistradas</h1>
-                    <a href="" class="btn btn-success">Ver conusltas</a>
+                    <a href="verificarConsultas/" class="btn btn-success">Ver conusltas</a>
                 </div>
                 <div class="col-8 tablaPrin">
-                    <table class="table  table-bordered table-hover">
+                    <table class="table  table-borderless table-hover">
                         <thead>
                             <th>#</th>
                             <th>Nombre</th>
@@ -88,30 +101,14 @@
                             <th>Fecha de consulta</th>
                         </thead>
                         <tbody>
+                            {% for vistaCita in vistaMain %}
                             <tr>
-                                <td>1</td>
-                                <td>Jorge</td>
-                                <td>Puente</td>
-                                <td>10/12/2022</td>
+                                <td >{{ vistaCita.NoCita }}</td>
+                                <td id="anchCol">{{ vistaCita.NomPaciente }}</td>
+                                <td id="anchCol">{{ vistaCita.Apeterno }} {{ cita.Amaterno }}</td>
+                                <td id="anchCol">{{ vistaCita.FechaConsulta }}</td>
                             </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Lauren</td>
-                                <td>Eve</td>
-                                <td>10/12/2022</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Martyn</td>
-                                <td>Doherty</td>
-                                <td>10/12/2022</td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>Tony</td>
-                                <td>Soprano</td>
-                                <td>10/12/2022</td>
-                            </tr>
+                            {% endfor %}
                         </tbody>
                     </table>
                 </div>
@@ -122,7 +119,7 @@
                         <br>
                         <h2 id="titulosAp1">Registrar</h2>
                         <br>
-                        <a href="RegistroCitas/" class="btn btn-primary">Registrar una cita</a>
+                        <a href="RegistroCitas/" class="btn" style="background-color: #4ACFDD; color: #2D304E; font-weight: bold;">Registrar una cita</a>
                     </div>
                 </div>
                 <div class="col-6">
@@ -130,11 +127,16 @@
                         <br>
                         <h2 id="titulosAp2">Pagos</h2>
                         <br>
-                        <a href="" class="btn btn-primary">Registrar un pago</a>
+                        <a href="pagos/" class="btn" style="background-color: #4ACFDD; color: #2D304E; font-weight: bold;">Registrar un pago</a>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+    <div class="jumbotron" id="pieDeP" style="background-color: #2D304E;">
+        <footer>
+            <p>Pie de pagina</p>
+        </footer>
     </div>
 </body>
 </html>

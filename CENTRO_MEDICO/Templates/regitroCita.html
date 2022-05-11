@@ -12,10 +12,11 @@
         }
 
         .tablaPrin{
-            height: 225px;
-            overflow: auto;
+            height: 750px;
+            overflow: scroll;
             margin-top: 15px;
             margin-bottom: 30px;
+            margin-left: 20px;
         }
 
         .card{
@@ -23,6 +24,21 @@
             border-radius: 15px;
         }
 
+        #anchCol{
+            width: 800px;
+        }
+
+        body{
+            background-color: #e3f2fd;
+        }
+        tbody{
+            background-color: white;
+        }
+
+        thead{
+            background-color: green;
+            color: white;
+        }
 
     </style>
 </head>
@@ -35,7 +51,7 @@
                       <p class="nav-link active text-white" style="font-weight: bold;" aria-current="page" href="#">Centro  Medico</hp>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link text-white" href="">Inicio</a>
+                      <a class="nav-link text-white" href="{% url 'main' %}">Inicio</a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link text-white " href="#">Listado de doctores</a>
@@ -51,10 +67,10 @@
                     <div class="card-body">
                         <h2>Datos Solcitados</h2>
                         <br>
-                        <form action="agregarRegistro/" method="post">
+                        <form action="agregarRegistro/" method="POST">
                             {% csrf_token %}
-                            <!--NOMRBE DEL PACIENTE-->
-                            <input type="text" id="nombreP" name="nombreP" class="form-control" placeholder="Nombre del paciente"><br>
+                            <!-- NOMRBE DEL PACIENTE-->
+                            <input type="text" id="nombreP" name="nombreP" class="form-control" placeholder="Nombre del paciente" disabled><br>
 
                             <!--APELLDIOS PATERNOS-->
                             <input type="text" class="form-control" id="apellidosPP" name="apellidosPP" placeholder="Apellido Paterno"><br>
@@ -64,7 +80,7 @@
 
                             <!--FECHA DE NACIMIENTO-->
                             <label for="fechaNac" class="form-label" style="font-weight: bold;"> Fecha de Nacimiento</label>
-                            
+
                             <input type="date" class="form-control" id="fechaNac"
                             name="fechaNac" value="{{fechaSistema}}"
                             min="1980-01-01" max="2040-12-31"><br>
@@ -85,21 +101,13 @@
                             <!--TOTAL CONSULTA-->
                             <input type="text" id="TotalConsul" name="TotalConsul" class="form-control" placeholder="Total consulta"><br>
 
-                            <!--DOCTOR ASIGANADO-->
-                            <label for="doctorAsig" style="font-weight: bold;"> Doctor Asignado</label>
-                            <select class="form-select" name="doctorAsig" id="doctorAsig" aria-label="Default select example">
-                                {% for doc in Doctores %}
-                                    <option value="{{doc.IdDoctor}}">{{doc.IdDoctor}} | {{doc.NomDoctor}}</option>
-                                {% endfor %}
-                            </select>
-
                             <br>
                             <input type="submit" class="btn btn-primary">
                         </form>
                     </div>
                 </div>
                 <div class="col-8 tablaPrin">
-                    <table class="table  table-bordered table-hover">
+                    <table class="table  table-borderless table-hover">
                         <thead>
                             <th>#</th>
                             <th>Nombre</th>
@@ -112,30 +120,19 @@
                             <th>Total Consulta</th>
                         </thead>
                         <tbody>
+                            {% for cita in citasReg %}
                             <tr>
-                                <td>1</td>
-                                <td>Jorge</td>
-                                <td>Puente</td>
-                                <td>10/12/2022</td>
+                                <td >{{ cita.NoCita }}</td>
+                                <td id="anchCol">{{ cita.NomPaciente }}</td>
+                                <td id="anchCol">{{ cita.Apeterno }}</td>
+                                <td id="anchCol">{{ cita.Amaterno }}</td>
+                                <td id="anchCol">{{ cita.FecNacimiento }}</td>
+                                <td id="anchCol">{{ cita.Edad }}</td>
+                                <td id="anchCol">{{ cita.Sexo }}</td>
+                                <td id="anchCol">{{ cita.FechaConsulta }}</td>
+                                <td id="anchCol">{{ cita.TotalConsulta }}</td>
                             </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Lauren</td>
-                                <td>Eve</td>
-                                <td>10/12/2022</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Martyn</td>
-                                <td>Doherty</td>
-                                <td>10/12/2022</td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>Tony</td>
-                                <td>Soprano</td>
-                                <td>10/12/2022</td>
-                            </tr>
+                            {% endfor %}
                         </tbody>
                     </table>
                 </div>
