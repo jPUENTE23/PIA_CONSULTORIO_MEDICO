@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,45 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <title>Regirtro de cita</title>
-    <style>
-        #containerFomr{
-            margin-top: 20px;
-        }
-
-        .tablaPrin{
-            height: 750px;
-            overflow: scroll;
-            margin-top: 15px;
-            margin-bottom: 30px;
-            margin-left: 20px;
-        }
-
-        .card{
-            margin-top: 15px;
-            border-radius: 15px;
-        }
-
-        #anchCol{
-            width: 800px;
-        }
-
-        body{
-            background-color: #e3f2fd;
-        }
-        tbody{
-            background-color: white;
-        }
-
-        thead{
-            background-color: green;
-            color: white;
-        }
-
-    </style>
+    <link rel="stylesheet" href='{% static "CSS/stilo_registroCita.css" %}' type="text/css">
 </head>
 <body>
     <div class="jumbotron-fluid bg-primary" >
-        <div class="container barraNav">
+        <div class="container navbar navbar-expand-lg navbar-light bg-primary">
             <nav class="bg-primary" >
                 <ul class="nav justify-content-center" style="font-size: 20px ;">
                     <li class="nav-item">
@@ -70,7 +37,7 @@
                         <form action="agregarRegistro/" method="POST">
                             {% csrf_token %}
                             <!-- NOMRBE DEL PACIENTE-->
-                            <input type="text" id="nombreP" name="nombreP" class="form-control" placeholder="Nombre del paciente" disabled><br>
+                            <input type="text" id="nombreP" name="nombreP" class="form-control" placeholder="Nombre del paciente"><br>
 
                             <!--APELLDIOS PATERNOS-->
                             <input type="text" class="form-control" id="apellidosPP" name="apellidosPP" placeholder="Apellido Paterno"><br>
@@ -98,8 +65,15 @@
                             name="fechaCons" value="{{fechaSistema}}"
                             min="{{fechaSistema}}" max="2040-12-31T00:00"><br>
 
+                            <label for="docAsig" class="form-label" style="font-weight: bold;">Doctor Asignado</label>
+                            <select name="doctorAsig" id="docAsig" class="form-select">
+                                {% for doc in Doctores %}
+                                    <option value="{{doc.IdDoctor}}">{{doc.NomDoctor}}</option>
+                                {% endfor %}
+                            </select><br>
+
                             <!--TOTAL CONSULTA-->
-                            <input type="text" id="TotalConsul" name="TotalConsul" class="form-control" placeholder="Total consulta"><br>
+                            <input type="number" id="TotalConsul" min="100" max="10000" name="TotalConsul" class="form-control" placeholder="Total consulta"><br>
 
                             <br>
                             <input type="submit" class="btn btn-primary">
@@ -109,7 +83,7 @@
                 <div class="col-8 tablaPrin">
                     <table class="table  table-borderless table-hover">
                         <thead>
-                            <th>#</th>
+                            <th id="th1">#</th>
                             <th>Nombre</th>
                             <th>Apellidos Paterno</th>
                             <th>Apellidos Materno</th>
@@ -123,14 +97,14 @@
                             {% for cita in citasReg %}
                             <tr>
                                 <td >{{ cita.NoCita }}</td>
-                                <td id="anchCol">{{ cita.NomPaciente }}</td>
-                                <td id="anchCol">{{ cita.Apeterno }}</td>
-                                <td id="anchCol">{{ cita.Amaterno }}</td>
-                                <td id="anchCol">{{ cita.FecNacimiento }}</td>
-                                <td id="anchCol">{{ cita.Edad }}</td>
-                                <td id="anchCol">{{ cita.Sexo }}</td>
-                                <td id="anchCol">{{ cita.FechaConsulta }}</td>
-                                <td id="anchCol">{{ cita.TotalConsulta }}</td>
+                                <td >{{ cita.NomPaciente }}</td>
+                                <td >{{ cita.Apeterno }}</td>
+                                <td >{{ cita.Amaterno }}</td>
+                                <td >{{ cita.FecNacimiento }}</td>
+                                <td >{{ cita.Edad }}</td>
+                                <td >{{ cita.Sexo }}</td>
+                                <td >{{ cita.FechaConsulta }}</td>
+                                <td >{{ cita.TotalConsulta }}</td>
                             </tr>
                             {% endfor %}
                         </tbody>

@@ -17,8 +17,8 @@ from unicodedata import name
 from django.contrib import admin
 from django.urls import path
 from Citas.views import vistaRegistro, main, agregarRegistro
-from Citas.views import verificarConsultas
-from Pagos.views import pagos, vistaPagos
+from Citas.views import verificarConsultas, listadoDoctores, agregarDoctor
+from Pagos.views import pagos, consultarPagos, eliminarPago
 
 
 urlpatterns = [
@@ -27,8 +27,11 @@ urlpatterns = [
     path('RegistroCitas/', vistaRegistro, name='RegistroCitas'),
     path('verificarConsultas/', verificarConsultas, name='verificarConsultas'),
     path('verificarConsultas/genPago/<int:idCita>', pagos, name='pagos'),
-    # path('verificarConsultas/genPago/<int:idCita>/PagoGenerado', agregPago, name='PagoGenerado'),
+    path('consultarPagos/', consultarPagos, name='consultarPagos'),
     path('verificarConsultas/<int:NoCita>', pagos, name='Pagos'),
-    path('RegistroCitas/agregarRegistro/', agregarRegistro, name='agregarRegistro')
+    path('RegistroCitas/agregarRegistro/', agregarRegistro, name='agregarRegistro'),
+    path('listadoDoctores/', listadoDoctores, name='listadoDoctores'),
+    path('listadoDoctores/agregarDoctor/', agregarDoctor, name='agregarDoctor'),
+    path('consultarPagos/eliminarPago/<int:idPago>', eliminarPago, name='eliminarPago')
 
 ]

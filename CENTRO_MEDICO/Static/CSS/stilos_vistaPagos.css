@@ -1,0 +1,73 @@
+.tablaCons {
+    height: 600px;
+    overflow: auto;
+    margin-top: 25px;
+    margin-bottom: 30px;
+}
+
+body{
+    background-color: #e3f2fd;
+}
+.mainEncab{
+    height: 225px;
+    margin-top: 15px;
+    margin-bottom: 30px;
+}
+
+.table{
+    margin-top: 20px;
+    table-layout: fixed;
+    margin: auto;
+}
+
+.btn {
+    border-radius: 10px;
+}
+
+
+#pieDeP{
+    height: 200PX;
+    margin-top: 50px;
+}
+
+.barraNav{
+    background-color: #2D304E;
+}
+
+tbody{
+    background-color: white;
+}
+
+thead{
+    background-color: yellow;
+    color: black;
+}
+
+#fila1{
+    margin-top: 50px;
+}
+
+/* #th1{
+    width: 50px;
+
+}
+
+#th2, #th3{
+    width: 150px;
+
+}
+
+#th4{
+    width: 100px;
+
+}
+
+#th5{
+    width: 100px;
+
+} */
+
+/* th, td {
+    width: 20px;
+    word-wrap: break-word;
+} */

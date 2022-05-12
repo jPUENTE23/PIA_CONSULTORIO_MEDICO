@@ -1,0 +1,64 @@
+.tablaPrin {
+    height: 225px;
+    overflow: auto;
+    margin-top: 15px;
+    margin-bottom: 30px;
+}
+
+body{
+    background-color: #e3f2fd;
+}
+.mainEncab{
+    height: 225px;
+    margin-top: 15px;
+    margin-bottom: 30px;
+}
+
+.table{
+    margin-top: 15px;
+}
+
+h1{
+    margin-top: 15px;
+}
+
+
+#apartadDos{
+    height: 200px;
+}
+
+#pagos, #registro{
+    height: 150px;
+}
+
+#registro, #pagos{
+    background-color: #8EF8D8;
+    border-radius: 20px;
+}
+
+.btn {
+    border-radius: 10px;
+}
+
+#titulosAp1{
+    border-top: 100px;
+}
+
+#pieDeP{
+    height: 200PX;
+    margin-top: 50px;
+}
+
+
+tbody{
+    background-color: white;
+}
+
+#mainLink{
+    margin-top: 15px;
+}
+
+thead{
+    background-color: #2D304E;
+    color: white;
+}

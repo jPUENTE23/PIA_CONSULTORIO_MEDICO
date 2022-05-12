@@ -10,6 +10,10 @@ import datetime
 from django.urls import reverse
 
 
+def obetenerFecha():
+    fecha = datetime.date.today()
+    return fecha
+
 def main(request):
     
     vistaCitas = Cita.objects.all()
@@ -50,8 +54,10 @@ def agregarRegistro (request):
     sexo = request.POST['sexoP']
     fechaConsulta = request.POST['fechaCons']
     totalConsulta = request.POST['TotalConsul']
+    doctor = request.POST['doctorAsig']
 
     insertDatos = Cita(
+            NomDoctor = Doctor.objects.get(IdDoctor=doctor),
             NomPaciente=nombre,
             Apeterno=apellidosP,
             Amaterno=apellidosM,
@@ -68,23 +74,25 @@ def agregarRegistro (request):
 
 
 def verificarConsultas(request):
-    
     consultas = Cita.objects.all()
-    
     ctxConsultas = {
         'consultas':consultas
     }
-    
     return render(request, 'verifRegistros.html',ctxConsultas)
 
-# def nuevaCita(request):
-#     if request.method == 'POST':
-#         form = citaForm(request.POST)
-#         if form.is_valid():
-#             form.save()
-#         return redirect('main')
-#     else:
-#         form = citaForm()
-    
-#     return render (request, 'prueba.html', form)
 
+def listadoDoctores(request):
+    listaDoc  = Doctor.objects.all()
+    ctxDoc = {
+        'dcotores':listaDoc
+    }
+    return render (request, 'regDoc.html', ctxDoc)
+
+
+def agregarDoctor(request):
+
+    nomDoc = request.POST['nombreDoc']
+    nuevoDoc = Doctor(NomDoctor=nomDoc)
+    nuevoDoc.save()
+
+    return HttpResponseRedirect(reverse('listadoDoctores'))

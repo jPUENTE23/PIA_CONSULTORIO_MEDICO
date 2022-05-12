@@ -1,0 +1,42 @@
+.tablaCons {
+    height: 600px;
+    overflow: auto;
+    margin-top: 15px;
+    margin-bottom: 30px;
+}
+
+body{
+    background-color: #e3f2fd;
+}
+.mainEncab{
+    height: 225px;
+    margin-top: 15px;
+    margin-bottom: 30px;
+}
+
+.table{
+    margin-top: 35px;
+}
+
+.btn {
+    border-radius: 10px;
+}
+
+
+#pieDeP{
+    height: 200PX;
+    margin-top: 50px;
+}
+
+.barraNav{
+    background-color: #2D304E;
+}
+
+tbody{
+    background-color: white;
+}
+
+thead{
+    background-color: yellow;
+    color: black;
+}

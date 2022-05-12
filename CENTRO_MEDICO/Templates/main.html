@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,81 +6,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href='{% static "CSS/estilos_main.css" %}' type="text/css">
     <title>Main</title>
-    <style>
-        .tablaPrin {
-            height: 225px;
-            overflow: auto;
-            margin-top: 15px;
-            margin-bottom: 30px;
-        }
-
-        body{
-            background-color: #e3f2fd;
-        }
-        .mainEncab{
-            height: 225px;
-            margin-top: 15px;
-            margin-bottom: 30px;
-        }
-
-        .table{
-            margin-top: 15px;
-        }
-
-        h1{
-            margin-top: 15px;
-        }
-
-
-        #apartadDos{
-            height: 200px;
-        }
-
-        #pagos, #registro{
-            height: 150px;
-        }
-
-        #registro, #pagos{
-            background-color: #8EF8D8;
-            border-radius: 20px;
-        }
-
-        .btn {
-            border-radius: 10px;
-        }
-
-        #titulosAp1{
-            border-top: 100px;
-        }
-
-        #pieDeP{
-            height: 200PX;
-            margin-top: 50px;
-        }
-
-        .barraNav{
-            background-color: #2D304E;
-        }
-
-        tbody{
-            background-color: white;
-        }
-    </style>
 </head>
 <body>
-    <div class="jumbotron-fluid barraNav" >
-        <div class="container barraNav">
-            <nav class="barraNav" >
+    <div class="jumbotron-fluid bg-primary" >
+        <div class="container navbar navbar-expand-lg navbar-light bg-primary">
+            <nav class="bg-primary" >
                 <ul class="nav justify-content-center" style="font-size: 20px ;">
                     <li class="nav-item">
-                      <p class="nav-link active text-white" style="font-weight: bold;" aria-current="page" href="#">Centro  Medico</hp>
+                      <p class="nav-link active text-white" style="font-weight: bold;" aria-current="page" href="#">CENTRO MEDICO</p>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link text-white" href="#">Inicio</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link text-white " href="#">Listado de doctores</a>
+                      <a class="nav-link text-white " href="listadoDoctores/">Listado de doctores</a>
                     </li>
                 </ul>
             </nav>
@@ -90,7 +32,7 @@
             <div class="row">
                 <div class="mainEncab col-4">
                     <h1>Verifica todas <br> las citas resgistradas</h1>
-                    <a href="verificarConsultas/" class="btn btn-success">Ver conusltas</a>
+                    <a href="verificarConsultas/" id="mainLink" class="btn btn-warning">Ver conusltas</a>
                 </div>
                 <div class="col-8 tablaPrin">
                     <table class="table  table-borderless table-hover">
@@ -117,17 +59,17 @@
                 <div class="col-6">
                     <div class="container" id="registro">
                         <br>
-                        <h2 id="titulosAp1">Registrar</h2>
+                        <h2 id="titulosAp1">Registrar una Consulta</h2>
                         <br>
-                        <a href="RegistroCitas/" class="btn" style="background-color: #4ACFDD; color: #2D304E; font-weight: bold;">Registrar una cita</a>
+                        <a href="RegistroCitas/" class="btn" style="background-color: #4ACFDD; color: #2D304E; font-weight: bold;">Registrar consulta</a>
                     </div>
                 </div>
                 <div class="col-6">
                     <div class="container" id="pagos">
                         <br>
-                        <h2 id="titulosAp2">Pagos</h2>
+                        <h2 id="titulosAp2">Consultar Pagos Generados</h2>
                         <br>
-                        <a href="pagos/" class="btn" style="background-color: #4ACFDD; color: #2D304E; font-weight: bold;">Registrar un pago</a>
+                        <a href="consultarPagos/" class="btn" style="background-color: #4ACFDD; color: #2D304E; font-weight: bold;">Verificar Pagos</a>
                     </div>
                 </div>
             </div>

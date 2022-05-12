@@ -1,3 +1,4 @@
+# from locale import dcgettext
 from django.db import models
 
 # Create your models here.
@@ -12,6 +13,7 @@ class Doctor(models.Model):
 
 class Cita(models.Model):
     NoCita = models.AutoField(primary_key=True, verbose_name='No. de Cita')
+    NomDoctor = models.ForeignKey(Doctor, verbose_name='Doctor Asignado', on_delete=models.CASCADE)
     NomPaciente = models.CharField(max_length=15, null=False, blank=False, verbose_name='Nombre del paciente')
     Apeterno = models.CharField(max_length=15, null=False, blank=False,  verbose_name='Apellido Paterno')
     Amaterno = models.CharField(max_length=15, null=False, blank=False,  verbose_name='Apellido Materno')
@@ -22,5 +24,5 @@ class Cita(models.Model):
     TotalConsulta = models.DecimalField(decimal_places=2 ,max_digits=10, null=False, blank=False, verbose_name='Total a pagar por la consulta')
     
     def __str__(self):
-        cita = "{0} - {1} - [{2}]".format(self.NoCita, self.NomPaciente, self.FechaConsulta)
+        cita = "({0}) - {1}".format(self.NoCita, self.NomPaciente)
         return cita

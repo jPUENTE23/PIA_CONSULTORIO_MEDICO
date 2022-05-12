@@ -1,0 +1,47 @@
+#containerFomr{
+    margin-top: 20px;
+}
+
+.tablaPrin{
+    height: 600px;
+    overflow: auto;
+    margin-top: 15px;
+    margin-bottom: 30px;
+    margin-left: 20px;
+}
+
+.card{
+    margin-top: 15px;
+    border-radius: 15px;
+    height: 250px;
+}
+
+#anchCol{
+    width: 800px;
+}
+
+body{
+    background-color: #e3f2fd;
+}
+tbody{
+    background-color: white;
+}
+
+thead{
+    background-color: yellow;
+    color:black;
+}
+
+.table{
+    table-layout: fixed;
+    padding: 0%;
+    /* border: 2px solid aqua; */
+}
+
+th, td{
+    width: 200px;
+}
+
+#th1{
+    width: 50px;
+}
