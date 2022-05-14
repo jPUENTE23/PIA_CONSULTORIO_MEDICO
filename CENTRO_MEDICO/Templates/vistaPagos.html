@@ -42,8 +42,8 @@
                 {% for pago in consPagos %}
                     <tr>
                         <td>  {{pago.IdPago}}  </td>
-                        <td>  {{pago.MontoPagar}}  </td>
-                        <td>  {{pago.Pagado}}  </td>
+                        <td> $ {{pago.MontoPagar}}  </td>
+                        <td> $ {{pago.Pagado}}  </td>
                         <td>  {{pago.NoCita}}  </td>
                         <td>  {{pago.fechaEmision}}  </td>
                         <td style="text-align: center;"><a href="eliminarPago/{{pago.IdPago}}" class="btn btn-danger">Eliminar Pago</a></td>

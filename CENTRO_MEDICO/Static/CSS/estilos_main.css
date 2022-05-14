@@ -32,8 +32,9 @@ h1{
 }
 
 #registro, #pagos{
-    background-color: #8EF8D8;
-    border-radius: 20px;
+    background-color: #ABEBC6;
+    border-radius: 15px;
+    border: solid 0px grey;
 }
 
 .btn {

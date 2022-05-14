@@ -32,7 +32,7 @@
             <div class="row">
                 <div class="card col-4" style="width: 18rem;">
                     <div class="card-body">
-                        <h2>Datos Solcitados</h2>
+                        <h2>Agregar Consulta</h2>
                         <br>
                         <form action="agregarRegistro/" method="POST">
                             {% csrf_token %}
@@ -104,7 +104,7 @@
                                 <td >{{ cita.Edad }}</td>
                                 <td >{{ cita.Sexo }}</td>
                                 <td >{{ cita.FechaConsulta }}</td>
-                                <td >{{ cita.TotalConsulta }}</td>
+                                <td > $ {{ cita.TotalConsulta }}</td>
                             </tr>
                             {% endfor %}
                         </tbody>

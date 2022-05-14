@@ -12,7 +12,10 @@ from Citas.views import obetenerFecha
 
 
 
-
+# FUNCION PAGOS
+'''
+    Emitira un pago cada que se solicite en la verificacion de las consultas.
+    Este obtendra valores del modelo Cita'''
 
 def pagos(request,idCita):
     total = Cita.objects.filter(NoCita=idCita).values_list('TotalConsulta')
@@ -21,39 +24,39 @@ def pagos(request,idCita):
     print(pagado)
     val_total = total[0][0]
     val_pagado = pagado[0][0]
-    
     fechaEm = obetenerFecha()
-
     datos  = Pagos(NoCita=Cita.objects.get(NoCita=idCita),
                    MontoPagar=val_total,
                    fechaEmision=fechaEm,
                    Pagado=val_pagado)
-
     datos.save()
+    return HttpResponseRedirect(reverse('consultarPagos'))
 
-    return HttpResponseRedirect(reverse('main'))
+
+# FUNCION CONSULTAR_PAGOS
+'''
+    Devolvera todos los pagos emitidos'''
 
 def consultarPagos(request):
     _pagos = Pagos.objects.all()
-    
     Pagos_ctx = {
         'consPagos': _pagos
     }
-    
     return render(request, 'vistaPagos.html', Pagos_ctx)
 
 def vistaPagos(request):
     consultas = Cita.objects.all()
-
     ctxConsultas = {
         'consultas':consultas
     }
     return render(request,'verifRegistros.html' ,ctxConsultas )
 
 
-def eliminarPago(reques, idPago):
+# FUNCION ELIMINAR_PAGO
+'''
+    Eliminara un pago cuando se solicite'''
 
+def eliminarPago(reques, idPago):
     pago = Pagos.objects.get(IdPago=idPago)
     pago.delete()
-    
     return HttpResponseRedirect(reverse('consultarPagos'))
